@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: golang-dep
+  name: golang-dep
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: golang-dep
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: golang-dep
+    spec:
+      containers:
+      - image: takuyayone/golang-sample:1.0.0
+        name: golang-sample
+        resources: {}
+        livenessProbe:
+          failureThreshold: 3
+          periodSeconds: 10
+          initialDelaySeconds: 10
+          httpGet:
+            path: /
+            port: 5000
+        readinessProbe:
+          failureThreshold: 3
+          periodSeconds: 10
+          initialDelaySeconds: 10
+          httpGet:
+            path: /
+            port: 5000
+status: {}
