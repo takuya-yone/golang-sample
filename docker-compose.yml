@@ -1,0 +1,12 @@
+version: '3'
+services:
+  golang:
+    build: ./
+    # container_name: nextjs-container
+    # image: nextjs-container:1.0.0
+    ports:
+      - '5000:5000'
+      # - "3000:80"
+    # environment:
+    #   - NEXT_PUBLIC_APIHOST=http://production
+    image: takuyayone/golang-sample:1.0.0
